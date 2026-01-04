@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: vasimphatan/mysql:5.0.0
+        image: vasimphatan/mysql:6.0.0
         envFrom:
         - configMapRef:
             name: mysql
