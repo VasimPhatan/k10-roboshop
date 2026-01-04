@@ -9,23 +9,23 @@ metadata:
     project: roboshop
   
   spec:
-  replicas: 1
-  selector: 
-    matchLabels:
-      app: redis
-      tier: redis
-      project: roboshop
-  template:
-    metadata:
-      labels:
+    replicas: 1
+    selector: 
+      matchLabels:
         app: redis
         tier: redis
         project: roboshop
+    template:
+      metadata:
+        labels:
+          app: redis
+          tier: redis
+          project: roboshop
 
-    spec:
-      containers:
-      - name: redis
-        image: vasimphatan/redis:5.0.0
+      spec:
+        containers:
+        - name: redis
+          image: vasimphatan/redis:5.0.0
 
 ---
 apiVersion: v1 
