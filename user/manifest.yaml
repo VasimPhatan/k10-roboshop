@@ -29,8 +29,8 @@ spec:
           image: vasimphatan/user:5.0.0
           envFrom:
           - configMapRef:
-              name: redis
-              
+              name: user
+
 
 ---
 apiVersion: v1 
