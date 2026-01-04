@@ -40,9 +40,11 @@ spec:
     tier: mongodb
     project: roboshop
   ports:
-  - project: TCP
+  - protocol : TCP
     port: 27017
     targetPort: 27017
+  type: clusterIP
+
   
   
 
