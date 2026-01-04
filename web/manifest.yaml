@@ -31,7 +31,7 @@ spec:
             path: nginx.conf
       containers:
       - name: web
-        image: vasimphatan/web:5.0.0
+        image: vasimphatan/web:6.0.0
         volumeMounts:
         - name: nginx-conf
           mountPath: /etc/nginx/nginx.conf
