@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  namespace: roboshop
+  labels:
+    app: user
+    tier: user
+    porject: roboshop
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+      tier: user
+      porject: roboshop
+  
+  template:
+    metadata:
+      labels:
+        app: user
+        tier: user
+        porject: roboshop
+    
+    spec:
+      containers:
+        - name: user
+          image: vasimphatan/user:5.0.0
+          envFrom:
+          - configMapRef:
+              name: redis
+              
+
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: user
+  namespace: roboshop
+
+spec:
+  selector:
+    app: user
+    tier: user
+    porject: roboshop
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: v1 
+kind: ConfigMap
+metadata: 
+  name: user
+  namespace: roboshop
+
+data:
+  MONGO: "true" # keep true in double quotes
+  MONGO_URL: "mongodb://mongodb:27017/user"  # protocol//service-name:service-port/schema
+  REDIS_HOST: "redis"
+
+    
