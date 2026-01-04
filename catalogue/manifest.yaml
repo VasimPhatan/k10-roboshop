@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: catalogue
-  namespace: roboshop1
+  namespace: roboshop
   labels:
     app: catalogue
     tier: catalogue
-    project: roboshop1
+    project: roboshop
 
 spec:
   replicas: 1
@@ -14,14 +14,14 @@ spec:
     matchLabels: 
       app: catalogue
       tier: catalogue
-      project: roboshop1
+      project: roboshop
 
   template:
     metadata:
       labels:
         app: catalogue
         tier: catalogue
-        project: roboshop1
+        project: roboshop
     spec:
       containers:
       - name: catalogue
@@ -35,13 +35,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: catalogue
-  namespace: roboshop1
+  namespace: roboshop
 
 spec:
   selector:
     app: catalogue
     tier: catalogue
-    project: roboshop1
+    project: roboshop
   ports:
   - protocol: TCP
     port: 8080
@@ -52,7 +52,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: catalogue
-  namespace: roboshop1
+  namespace: roboshop
 data:
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb:27017/catalogue"
